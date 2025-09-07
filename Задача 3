@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include <cassert>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+void bubbleSort(vector<int>& vec) {
+    for (int i = 0; i < vec.size(); i++) {
+        for (int j = 0; j < vec.size() - 1 - i; j++) {
+            if (vec[j] > vec[j + 1]) {
+                int temp = vec[j];
+                vec[j] = vec[j + 1];
+                vec[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    vector<int> vec;
+    int input, maxNum = -10000;
+
+    do {
+        cin >> input;
+
+        if (input > maxNum) {
+            maxNum = input;
+        }
+
+        if (input == -1) {
+            bubbleSort(vec);
+            cout << vec[4] << "\n"; 
+            
+        }
+
+        else if (input != -2) {
+            vec.push_back(input);
+            if (vec.size() > 5) {
+                bubbleSort(vec);
+                vec.erase(prev(vec.end()));
+            }
+        }
+    } while (input != -2);
+}
