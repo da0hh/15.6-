@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+#include <cassert>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    int a[] = { 2, 7, 11, 15 };
+    int n = 4, result = 9;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n - 1; j++) {
+            if (a[i] + a[j] == result) {
+                int index_i = a[i], index_j = a[j];
+                cout << "Индексы: " << index_i << " и " << index_j << endl;
+                return 0;
+            }
+        }
+    }
+
+    cout << "Nothing found. \n";
+}
