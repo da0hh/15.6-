@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <cassert>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+void printByAbs(const std::vector<int>& arr) {
+    int left = 0;      
+    int right = 0;     
+
+    while (right < arr.size() && arr[right] < 0) {
+        right++;
+    }
+
+    while (left < right) {
+        if (right < arr.size() &&
+            (left == 0 || std::abs(arr[left]) > std::abs(arr[right]))) {
+            std::cout << arr[right] << " ";
+            right++;
+        }
+        else {
+            std::cout << arr[left] << " ";
+            left++;
+        }
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "RU");
+    std::vector<int> arr = { -100, -50, -5, 1, 10, 15 };
+
+    printByAbs(arr);
+
+}
